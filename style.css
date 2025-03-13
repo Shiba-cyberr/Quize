@@ -1,0 +1,281 @@
+/* CSS Variables */
+:root {
+    --linear-grad: linear-gradient(to right, #141E30, #243B55);
+    --grad-clr1: #141E30;
+    --grad-clr2: #243B55;
+}
+
+/* Global Styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: #e1dff7;
+    display: grid;
+    place-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 850px;
+    height: 500px;
+    background-color: #fff;
+    box-shadow: 25px 30px 55px rgba(0, 0, 0, 0.05);
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+.form-container {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    padding: 0 40px;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-up-container {
+    opacity: 0;
+    z-index: 1;
+}
+
+.sign-in-container {
+    z-index: 2;
+}
+
+form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+}
+
+.form-container h1 {
+    color: #141E30;
+    font-size: 2.25rem;
+    margin-bottom: 19px;
+}
+
+.social-container {
+    margin: 20px 0;
+}
+
+.social-container a {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+}
+
+span {
+    font-size: 14px;
+    color: #666;
+    margin: 15px 0;
+}
+
+.infield {
+    position: relative;
+    margin: 6px 0;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #f3f3f3;
+    border: none;
+    outline: none;
+    margin: 10px 0;
+}
+
+label {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: var(--linear-grad);
+    transition: 0.3s;
+}
+
+input:focus ~ label {
+    width: 100%;
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+a.forgot {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #eee;
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid var(--grad-clr1);
+    background: var(--grad-clr2);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-container button {
+    margin-top: 10px;
+}
+
+.form-container button:hover {
+    background: #fff;
+    color: var(--grad-clr1);
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 60%;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 9;
+}
+/* Overlay Button Styling */
+#overlayBtn {
+    cursor: pointer;
+    position: absolute;
+    bottom: 100.3px; /* Moved to bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 45px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    line-height: 41.6px; /* Vertically centers text */
+    transition: all 0.3s ease-in-out;
+}
+
+#overlayBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: #ccc;
+}
+.overlay {
+    position: relative;
+    background: var(--linear-grad);
+    color: #fff;
+    left: -150%;
+    height: 100%;
+    width: 250%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    text-align: center;
+    height: 100%;
+    width: 340px;
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    right: 60%;
+    transform: translateX(12%);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0%);
+}
+
+.overlay-panel h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 25px 0 35px;
+}
+
+.overlay-panel button {
+    border: none;
+    background: transparent;
+    color: #fff;
+    margin-top: 80px;
+}
+
+/* Active State Styles */
+.right-panel-active .overlay-container {
+    transform: translateX(-150%);
+}
+
+.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.right-panel-active .overlay-left {
+    transform: translateX(25%);
+}
+
+.right-panel-active .overlay-right {
+    transform: translateX(35%);
+}
+
+.right-panel-active .sign-in-container {
+    transform: translateX(20%);
+    opacity: 0;
+}
+
+.right-panel-active .sign-up-container {
+    transform: translateX(66.7%);
+    opacity: 1;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+    0%, 50% { opacity: 0; }
+    50.1%, 100% { opacity: 1; }
+}
+
+/* Button Scaling Animation */
+.btnscaled {
+    animation: scaleBtn 0.6s;
+}
+
+
+
+@keyframes scaleBtn {
+    0% { width: 143.67px; }
+    50% { width: 250px; }
+    100% { width: 143.67px; }
+}
